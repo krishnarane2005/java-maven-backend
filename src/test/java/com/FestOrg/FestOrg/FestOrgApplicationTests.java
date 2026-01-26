@@ -1,13 +1,8 @@
-package com.FestOrg.FestOrg;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
 @SpringBootTest
+@org.springframework.test.context.ActiveProfiles("test")
 class FestOrgApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    void contextLoads() {
+    }
 }
