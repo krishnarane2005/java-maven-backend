@@ -1,20 +1,35 @@
-pipeline {
-  agent any
-  stages {
-      stage("build"){
-        steps{
-          echo 'building the eapplication'
+pipeline{
+    agent any
+    tools{
+        maven 'maven-3.9'
+    }
+    stages{
+        stage('build jar'){
+            steps{
+                script{
+                    echo "building the application..."
+                    sh 'mvn package'
+                }
+            }
         }
-      }
-      stage("test"){
-        steps{
-          echo 'testing the eapplication'
+        stage('build image'){
+            steps{
+                script{
+                    echo "building the docker image..."
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', usernameVariable: 'USER', passwordVariable: 'PASS')]){
+                        sh 'docker build -t krishnarane2005/java-maven-repo:v2.0 .'
+                        sh "echo $PASS | docker login -u $USER --password-stdin"
+                        sh "docker push krishnarane2005/java-maven-repo:v2.0"
+                    }
+                }
+            }
         }
-      }
-      stage("deploy"){
-        steps{
-          echo 'deploying the eapplication'
+        stage("deploy"){
+            steps{
+                script{
+                    echo "Deploying th eapplication..."
+                }
+            }
         }
-      }
-  }
+    }
 }
