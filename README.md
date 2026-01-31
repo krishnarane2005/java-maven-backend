@@ -73,3 +73,5 @@ This project is equipped with a `Jenkinsfile` for automated delivery.
 5.  **Deploy**: (Placeholder) Triggers deployment logic.
 
 > **Note**: The pipeline requires a Jenkins credential `docker-hub-repo` for pushing images.
+
+------------------------------------------------------------
