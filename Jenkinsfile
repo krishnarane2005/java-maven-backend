@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-@Library('jenkins-shared-library')
+@Library('jenkins-shared-library@main')_
 def gv 
 pipeline{
     agent any
@@ -10,6 +10,7 @@ pipeline{
         stage("init"){
             steps{
                 script{
+                    echo "✅ Jenkinsfile detected change and pipeline triggered automatically"
                     gv = load "script.groovy"
                 }
             }   
