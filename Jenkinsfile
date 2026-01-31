@@ -51,5 +51,23 @@ pipeline{
                 }
             }
         }
+        stage("commit version update"){
+            steps{
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'github-credentials    ', usernameVariable: 'USER', passwordVariable: 'PASS')]){
+                        sh 'git config --global user.name "krishnarane2005"'
+                        sh 'git config --global user.email "krishnarane2005@gmail.com"'
+
+                        sh 'git status'
+                        sh 'git branch'
+                        sh 'git config --list'
+
+                        sh "git remote set-url origin https://$USER:$PASS@github.com/krishnarane2005/java-maven-backend.git"
+                        sh 'git add .'
+                        sh 'git commit -m "Version update"'
+                        sh 'git push origin main'
+                    }
+                }   
+        }
     }
 }
