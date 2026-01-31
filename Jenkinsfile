@@ -12,8 +12,7 @@ pipeline{
                 script{
                     echo 'Version Updating...'
                     sh 'mvn build-helper:parse-version versions:set -DnewVersion=\'${parsedVersion.nextMajorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}\' versions:commit'
-                    def ver = readFile('pom.xml') =~ '<version>(.+)</version>'
-                    def version = ver[0][1]
+                    def version = sh(returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout').trim()
                     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
                 }
             }
