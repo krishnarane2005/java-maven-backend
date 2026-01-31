@@ -54,7 +54,7 @@ pipeline{
         stage("commit version update"){
             steps{
                 script{
-                    withCredentials([usernamePassword(credentialsId: 'github-credentials    ', usernameVariable: 'USER', passwordVariable: 'PASS')]){
+                    withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USER', passwordVariable: 'PASS')]){
                         sh 'git config --global user.name "krishnarane2005"'
                         sh 'git config --global user.email "krishnarane2005@gmail.com"'
 
@@ -68,6 +68,7 @@ pipeline{
                         sh 'git push origin main'
                     }
                 }   
+            }
         }
     }
 }
