@@ -35,12 +35,12 @@ jobs:
       run: .\mvnw.cmd clean package -DskipTests
 
   # Job 2: Build Docker Image (runs only on Ubuntu, after tests pass)
-  docker-build:
-    needs: build-and-test
-    runs-on: ubuntu-latest
+  # docker-build:
+  #   needs: build-and-test
+  #   runs-on: ubuntu-latest
     
-    steps:
-    - uses: actions/checkout@v4
+  #   steps:
+  #   - uses: actions/checkout@v4
     
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag krishnarane2005/java-maven-repo:$(date +%s)
+  #   - name: Build the Docker image
+  #     run: docker build . --file Dockerfile --tag krishnarane2005/java-maven-repo:$(date +%s)
