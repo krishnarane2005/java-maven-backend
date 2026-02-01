@@ -65,7 +65,7 @@ pipeline{
                         sh "git remote set-url origin https://$USER:$PASS@github.com/krishnarane2005/java-maven-backend.git"
                         sh 'git add .'
                         sh 'git commit -m "Version update"'
-                        sh 'git push origin HEAD:refs/heads/Jenkins'
+                        sh "git push origin HEAD:refs/heads/Jenkins-auto-${BUILD_NUMBER}"
                     }
                 }
             }
