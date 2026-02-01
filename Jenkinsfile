@@ -67,7 +67,7 @@ pipeline{
                         sh 'git commit -m "Version update"'
                         sh 'git push origin HEAD:refs/heads/Jenkins'
                     }
-                }   
+                }
             }
         }
     }
